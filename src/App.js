@@ -12,12 +12,18 @@ function App() {
 
   useEffect(() => {
     if (localStorage.getItem("notes") === null) {
-      onAddNote();
+      const newNote = {
+        id: uuid(),
+        title: "Без названия",
+        body: "Заметка с текстом, появляющаяся при первом запуске",
+        lastModified: Date.now(),
+      };
+      setNotes([newNote, ...notes]);
     }
     localStorage.setItem("notes", JSON.stringify(notes));
   }, [notes]);
 
-  function onAddNote() {
+  const onAddNote = () => {
     const newNote = {
       id: uuid(),
       title: "Без названия",
@@ -25,7 +31,7 @@ function App() {
       lastModified: Date.now(),
     };
     setNotes([newNote, ...notes]);
-  }
+  };
 
   const onUpdateNote = (updatedNote) => {
     const updatedNotesArray = notes.map((note) => {
