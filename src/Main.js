@@ -30,10 +30,6 @@ const Main = ({ activeNote, onUpdateNote }) => {
           onChange={(e) => onEditField("body", e.target.value)}
         ></textarea>
       </div>
-      <div className="app-main-note-preview">
-        <h1 className="preview-title">{activeNote.title}</h1>
-        <div className="markdown-preview">{activeNote.body}</div>
-      </div>
     </div>
   );
 };
